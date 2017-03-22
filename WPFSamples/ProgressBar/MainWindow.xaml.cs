@@ -24,5 +24,18 @@ namespace ProgressBar
         {
             InitializeComponent();
         }
+
+        private void Start_Click(object sender, RoutedEventArgs e)
+        {
+            ProgressBar1.Maximum = 4000;
+            for (int i = 0; i < 100000; i++)
+            {
+                this.Dispatcher.Invoke(new Action(delegate
+                {
+                    this.ProgressBar1.Value = i;
+                }),
+                System.Windows.Threading.DispatcherPriority.Background);
+            }
+        }
     }
 }
